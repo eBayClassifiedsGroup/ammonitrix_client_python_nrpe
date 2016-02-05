@@ -13,9 +13,7 @@ results = nrpe.execute_commands()
 
 for check, result in results.iteritems():
     client.set_name('laptopreinoud/{}'.format(check))
-    check_data = result['result']
-    check_data['resultcode'] = result['resultcode']
-
-    client.set_check_data([check_data])
+    client.set_tags(['foo', 'bar', 1])
+    client.set_check_data(result)
     client.send_result()
     print "sent laptopreinoud/{}".format(check)

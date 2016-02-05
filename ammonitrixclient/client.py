@@ -57,12 +57,15 @@ class Client(object):
         self.name = name
 
     def set_check_data(self, check_data):
-        # TODO: sanity checks
+        if not isinstance(check_data, list):
+            check_data = [check_data]
         self.check_data = check_data
 
     def set_tags(self, tags):
-        # TODO: sanity checks
-        self.tags = tags
+        """ set tags, convert to list of strings when needed """
+        if not isinstance(tags, list):
+            tags = [tags]
+        self.tags = map(str, tags)
 
     def set_server(self, server_hostname, port=5858, path="data", protocol='https'):
         self.server_hostname = server_hostname
