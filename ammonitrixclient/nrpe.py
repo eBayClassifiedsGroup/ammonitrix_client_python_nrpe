@@ -67,7 +67,7 @@ class Nrpe (object):
 
             parsed_result = self.parse_nagiosresult(result)
             results[name] = {'resultcode': resultcode,
-                                'result': parsed_result}
+                             'result': parsed_result}
         return results
 
 
